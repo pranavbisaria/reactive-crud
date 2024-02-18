@@ -1,6 +1,6 @@
-package com.bookStore.payload.request;
+package com.bookstore.payload.request;
 
-import com.bookStore.entity.Book;
+import com.bookstore.entity.Book;
 
 public record CreateBookRequest (
         String title,

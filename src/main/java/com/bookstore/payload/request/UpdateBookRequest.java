@@ -1,4 +1,4 @@
-package com.bookStore.payload.request;
+package com.bookstore.payload.request;
 
 public record UpdateBookRequest (
         Long bookId,

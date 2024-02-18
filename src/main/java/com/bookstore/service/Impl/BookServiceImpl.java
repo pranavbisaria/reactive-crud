@@ -1,11 +1,11 @@
-package com.bookStore.service.Impl;
+package com.bookstore.service.Impl;
 
-import com.bookStore.entity.Book;
-import com.bookStore.payload.request.CreateBookRequest;
-import com.bookStore.payload.request.UpdateBookRequest;
-import com.bookStore.payload.response.BookResponse;
-import com.bookStore.repository.BookRepository;
-import com.bookStore.service.BookService;
+import com.bookstore.entity.Book;
+import com.bookstore.payload.request.CreateBookRequest;
+import com.bookstore.payload.request.UpdateBookRequest;
+import com.bookstore.payload.response.BookResponse;
+import com.bookstore.repository.BookRepository;
+import com.bookstore.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

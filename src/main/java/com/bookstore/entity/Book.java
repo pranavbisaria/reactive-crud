@@ -1,6 +1,6 @@
-package com.bookStore.entity;
+package com.bookstore.entity;
 
-import com.bookStore.payload.response.BookResponse;
+import com.bookstore.payload.response.BookResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

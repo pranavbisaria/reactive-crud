@@ -1,9 +1,9 @@
-package com.bookStore.controller;
+package com.bookstore.controller;
 
-import com.bookStore.payload.request.CreateBookRequest;
-import com.bookStore.payload.request.UpdateBookRequest;
-import com.bookStore.payload.response.BookResponse;
-import com.bookStore.service.BookService;
+import com.bookstore.payload.request.CreateBookRequest;
+import com.bookstore.payload.request.UpdateBookRequest;
+import com.bookstore.payload.response.BookResponse;
+import com.bookstore.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

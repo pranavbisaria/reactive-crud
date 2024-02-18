@@ -1,4 +1,4 @@
-package com.bookStore.payload.response;
+package com.bookstore.payload.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
