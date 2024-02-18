@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/reactiveDb
+    url: r2dbc:mysql://localhost:3306/reactiveDb?serverZoneId=Asia/Kolkata
     username: root
     password: Pranav@123
 

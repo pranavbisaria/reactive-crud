@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BookService {
-    Mono<BookResponse> createBook(CreateBookRequest book);
+    Flux<BookResponse> createBook(Flux<CreateBookRequest> book);
 
     Mono<BookResponse> updateBook(UpdateBookRequest request);
 

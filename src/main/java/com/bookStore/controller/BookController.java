@@ -17,7 +17,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<Mono<BookResponse>> create(@RequestBody CreateBookRequest createBookRequest) {
+    public ResponseEntity<Flux<BookResponse>> create(@RequestBody Flux<CreateBookRequest> createBookRequest) {
         return ResponseEntity.ok(this.bookService.createBook(createBookRequest));
     }
 

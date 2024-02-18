@@ -1,6 +1,5 @@
 package com.bookStore.entity;
 
-import com.bookStore.payload.request.CreateBookRequest;
 import com.bookStore.payload.response.BookResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Table("book")
 @Getter
@@ -37,6 +37,8 @@ public class Book {
         this.year = year;
         this.price = price;
         this.description = description;
+        createdAt = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
+        updatedAt = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
     }
 
     public BookResponse mapBookResponse() {

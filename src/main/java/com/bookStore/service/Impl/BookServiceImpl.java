@@ -17,14 +17,10 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
 
     @Override
-    public Mono<BookResponse> createBook(CreateBookRequest book) {
-        return this.bookRepository.save(new Book(
-            book.title(),
-            book.author(),
-            book.year(),
-            book.price(),
-            book.description()
-        )).map(Book::mapBookResponse);
+    public Flux<BookResponse> createBook(Flux<CreateBookRequest> book) {
+        return this.bookRepository.saveAll(
+                book.map(CreateBookRequest::toMapBook)
+        ).map(Book::mapBookResponse);
     }
 
     @Override
