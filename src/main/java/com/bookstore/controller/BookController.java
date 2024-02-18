@@ -40,4 +40,9 @@ public class BookController {
     public ResponseEntity<Mono<Void>> delete(@PathVariable Long id){
         return ResponseEntity.ok(this.bookService.deleteBook(id));
     }
+
+    @GetMapping("/byTitle")
+    public ResponseEntity<Flux<BookResponse>> searchByTitle(@RequestParam String query) {
+        return ResponseEntity.ok(this.bookService.findAllByTitle(query));
+    }
 }
