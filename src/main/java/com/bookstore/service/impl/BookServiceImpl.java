@@ -1,6 +1,7 @@
 package com.bookstore.service.impl;
 
 import com.bookstore.entity.Book;
+import com.bookstore.exception.ResourceNotFoundException;
 import com.bookstore.payload.request.CreateBookRequest;
 import com.bookstore.payload.request.UpdateBookRequest;
 import com.bookstore.payload.response.BookResponse;
@@ -27,15 +28,17 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Mono<BookResponse> updateBook(UpdateBookRequest request) {
-        Mono<Book> oldBook = this.bookRepository.findById(request.bookId());
-
-        return oldBook.flatMap(b -> {
-            b.setTitle(request.title());
-            b.setAuthor(request.author());
-            b.setYear(request.year());
-            b.setPrice(request.price());
-            b.setDescription(request.description());
-            return this.bookRepository.save(b);
+        return this.bookRepository.findById(request.bookId())
+                .switchIfEmpty(
+                        Mono.error(new ResourceNotFoundException("Book", "Id", request.bookId().toString()))
+                )
+                .flatMap(b -> {
+                    b.setTitle(request.title());
+                    b.setAuthor(request.author());
+                    b.setYear(request.year());
+                    b.setPrice(request.price());
+                    b.setDescription(request.description());
+                    return this.bookRepository.save(b);
         }).map(Book::mapBookResponse);
     }
 
@@ -46,7 +49,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Mono<BookResponse> findById(Long id) {
-        return this.bookRepository.findById(id).map(Book::mapBookResponse);
+        return this.bookRepository.findById(id)
+                .switchIfEmpty(Mono.error(new ResourceNotFoundException("Book", "Id", id.toString())))
+                .map(Book::mapBookResponse);
     }
 
     // To illustrate the reactive fetch, I am using a delay of 2 seconds to show observable fetch

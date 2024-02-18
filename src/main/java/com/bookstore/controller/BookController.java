@@ -4,6 +4,7 @@ import com.bookstore.payload.request.CreateBookRequest;
 import com.bookstore.payload.request.UpdateBookRequest;
 import com.bookstore.payload.response.BookResponse;
 import com.bookstore.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<Flux<BookResponse>> create(@RequestBody Flux<CreateBookRequest> createBookRequest) {
+    public ResponseEntity<Flux<BookResponse>> create(@Valid @RequestBody Flux<CreateBookRequest> createBookRequest) {
         return ResponseEntity.ok(this.bookService.createBook(createBookRequest));
     }
 
@@ -32,7 +33,7 @@ public class BookController {
     }
 
     @PutMapping
-    public ResponseEntity<Mono<BookResponse>> update(@RequestBody UpdateBookRequest request) {
+    public ResponseEntity<Mono<BookResponse>> update(@Valid @RequestBody UpdateBookRequest request) {
         return ResponseEntity.ok(this.bookService.updateBook(request));
     }
 
