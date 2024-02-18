@@ -1,4 +1,4 @@
-package com.bookstore.service.Impl;
+package com.bookstore.service.impl;
 
 import com.bookstore.entity.Book;
 import com.bookstore.payload.request.CreateBookRequest;
@@ -49,7 +49,7 @@ public class BookServiceImpl implements BookService {
         return this.bookRepository.findById(id).map(Book::mapBookResponse);
     }
 
-    // To illustrate the reactive fetch, i am using a delay of 2 seconds to show observable fetch
+    // To illustrate the reactive fetch, I am using a delay of 2 seconds to show observable fetch
     @Override
     public Flux<BookResponse> findAll() {
         return this.bookRepository.findAll().map(Book::mapBookResponse).delayElements(Duration.ofMillis(2000));
