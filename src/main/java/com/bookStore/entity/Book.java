@@ -11,7 +11,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 @Table("book")
 @Getter
@@ -37,8 +36,6 @@ public class Book {
         this.year = year;
         this.price = price;
         this.description = description;
-        createdAt = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
-        updatedAt = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
     }
 
     public BookResponse mapBookResponse() {

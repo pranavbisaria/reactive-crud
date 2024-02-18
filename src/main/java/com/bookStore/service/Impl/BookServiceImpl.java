@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
@@ -47,9 +49,10 @@ public class BookServiceImpl implements BookService {
         return this.bookRepository.findById(id).map(Book::mapBookResponse);
     }
 
+    // To illustrate the reactive fetch, i am using a delay of 2 seconds to show observable fetch
     @Override
     public Flux<BookResponse> findAll() {
-        return this.bookRepository.findAll().map(Book::mapBookResponse);
+        return this.bookRepository.findAll().map(Book::mapBookResponse).delayElements(Duration.ofMillis(2000));
     }
 
     @Override
